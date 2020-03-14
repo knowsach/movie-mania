@@ -1,0 +1,11 @@
+<loader *ngIf="loader"></loader>
+
+<div class="container genre-container">
+    <div class="row">
+        <div class="card col-md-3 col-xs-3 genre-card" *ngFor="let genre of movieGenreList" (click)="onGenreSelect(genre)">
+            <div class="card-body text-center">
+                <label> {{genre.name}} </label>
+            </div>
+        </div>
+    </div>
+</div>
