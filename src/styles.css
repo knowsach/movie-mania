@@ -73,3 +73,13 @@ body {
 .genre-container{
     padding: 5% !important;
 }
+
+.custom-badge{
+  font-weight: 200 !important;
+  margin: 2.5px 8px;
+  cursor: pointer;
+}
+
+.custom-badge :hover{
+  font-weight: 400;
+}

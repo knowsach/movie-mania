@@ -1,3 +1,19 @@
 <loader *ngIf="loader"></loader>
 
-<h1> movies component </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-xs-1 badge badge-secondary custom-badge" *ngFor='let genre of allGenresList' (click)='onGenreChnage(genre)'>
+      {{genre.name}}
+    </div>
+
+    <div class="col-md-12" style="margin-top:10px">
+      <h2> Genre : {{selectedGenre.name}} </h2>
+    </div>
+
+    <div class="col-md-3 col-xs-3 card" *ngFor='let movie of allMovieList'>
+      <div class="card-body text-center">
+        {{movie.title}}
+      </div>
+    </div>
+  </div>
+</div>

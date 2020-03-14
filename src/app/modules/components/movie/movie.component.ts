@@ -3,6 +3,8 @@ import { GenreDataService } from '../movie-genres/genre.service';
 import { GenreModel } from '../movie-genres/genre.model';
 import { MovieService } from 'src/app/services/movie/movie';
 import { Router } from '@angular/router';
+import { MovieModel } from './movie.model';
+import { GenreService } from 'src/app/services/genre/genre';
 
 @Component({
     selector: 'movie',
@@ -12,21 +14,27 @@ import { Router } from '@angular/router';
 export class MovieComponent {
 
     selectedGenre: GenreModel;
+    allGenresList : GenreModel[];
+    allMovieList : MovieModel[];
     loader: boolean;
 
     constructor(
         private genreDataService: GenreDataService,
         private movieService: MovieService,
-        public router: Router
+        public router: Router,
+        private genreService :GenreService
     ) {
 
         this.loader = false;
         this.selectedGenre = new GenreModel();
+        this.allGenresList = new Array<GenreModel>();
+        this.allMovieList = new Array<MovieModel>();
 
         this.genreDataService.genreDataObservable.subscribe(
             response => {
-                console.log(response.genreData);
+                console.log(response.genreData , response.allGenresData);
                 this.selectedGenre = response.genreData;
+                this.allGenresList = response.allGenresData;
                 if (this.selectedGenre)
                     this.getMovieList();
                 else
@@ -40,7 +48,8 @@ export class MovieComponent {
         this.movieService.getMovieList(this.selectedGenre.id)
             .subscribe(
                 response => {
-                    console.log('movie list:', response);
+                    this.allMovieList = response['results'];
+                    console.log('movie list:', response , this.allMovieList);
                     this.loader = false;
                 },
                 err => {
@@ -48,5 +57,10 @@ export class MovieComponent {
                     this.loader = false;
                 }
             )
+    }
+
+    onGenreChnage(selectedGenre){
+       this.selectedGenre = selectedGenre;
+       this.getMovieList();
     }
 }

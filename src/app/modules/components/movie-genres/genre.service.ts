@@ -5,10 +5,10 @@ import { GenreModel } from './genre.model'
 @Injectable()
 export class GenreDataService {
 
-    genreBehaviourSubject = new BehaviorSubject<{ genreData: GenreModel }>({ genreData: null });
+    genreBehaviourSubject = new BehaviorSubject<{ genreData: GenreModel  , allGenresData : GenreModel[] }>({ genreData: null , allGenresData:[] });
     genreDataObservable = this.genreBehaviourSubject.asObservable();
 
-    updateGenreData(newGenre : GenreModel) {
-        this.genreBehaviourSubject.next({genreData : newGenre});
+    updateGenreData(newGenre : GenreModel , allGenresData:GenreModel[]) {
+        this.genreBehaviourSubject.next({genreData : newGenre , allGenresData : allGenresData});
     }
 }

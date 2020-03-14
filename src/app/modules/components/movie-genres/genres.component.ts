@@ -46,7 +46,7 @@ export class GenreComponent {
 
     onGenreSelect(genreData: GenreModel) {
         console.log('genre selected:', genreData);
-        this.genreDataService.updateGenreData(genreData);
+        this.genreDataService.updateGenreData(genreData , this.movieGenreList);
         this.router.navigate(['/movies']);
     }
 }
