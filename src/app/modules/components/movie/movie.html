@@ -2,7 +2,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-1 col-xs-1 badge badge-secondary custom-badge" *ngFor='let genre of allGenresList' (click)='onGenreChnage(genre)'>
+    <div class="col-md-1 col-xs-1 badge badge-secondary custom-badge" *ngFor='let genre of allGenresList'
+      (click)='onGenreChnage(genre)'>
       {{genre.name}}
     </div>
 
@@ -10,10 +11,36 @@
       <h2> Genre : {{selectedGenre.name}} </h2>
     </div>
 
-    <div class="col-md-3 col-xs-3 card" *ngFor='let movie of allMovieList'>
-      <div class="card-body text-center">
-        {{movie.title}}
+    <div class="movie-container row">
+      <div class="col-md-3 col-xs-3 card" *ngFor='let movie of allMovieList'>
+        <div class="card-body text-center">
+          <div class="col-md-12 text-center">
+            <span class='movie-title'>{{movie.title}}</span>
+          </div>
+          <div class="row movie-sub-details">
+            <div class="col-md-6" style="padding-left: 0px;">
+              <mat-icon class='vote-count-icon' aria-hidden="false" aria-label="Example home icon">pan_tool
+              </mat-icon>
+              <span class='movie-sub-label'>{{movie.popularity}} pop..</span>
+            </div>
+            <div class="col-md-6" style="padding-left: 0px;">
+              <mat-icon class='vote-count-icon' aria-hidden="false" aria-label="Example home icon">where_to_vote
+              </mat-icon>
+              <span class='movie-sub-label'>{{movie.vote_count}} votes</span>
+            </div>
+          </div>
+
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- paging movie list -->
+  <div class="row float-right">
+    <div class="col-md-12 custom-col-pagination">
+      <ngb-pagination [(page)]="responseData.page" [maxSize]="4" [pageSize]="allMovieList.length"
+        [collectionSize]="responseData.total_results" [rotate]='true' (pageChange)='onPageChange($event)'>
+      </ngb-pagination>
     </div>
   </div>
 </div>

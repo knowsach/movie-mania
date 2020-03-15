@@ -9,10 +9,14 @@ import { HeaderComponent } from './modules/components/header/header.component';
 import { GenreComponent } from './modules/components/movie-genres/genres.component';
 import { MovieComponent } from './modules/components/movie/movie.component';
 import { GenreService } from './services/genre/genre';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './modules/shared/loader/loader.component';
 import { GenreDataService } from './modules/components/movie-genres/genre.service';
 import { MovieService } from './services/movie/movie';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { MovieService } from './services/movie/movie';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
+    MatIconModule
   ],
   exports: [
     HeaderComponent,
@@ -35,7 +43,7 @@ import { MovieService } from './services/movie/movie';
     MovieComponent,
     LoaderComponent
   ],
-  providers: [GenreService , GenreDataService , MovieService],
+  providers: [GenreService, GenreDataService, MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

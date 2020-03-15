@@ -8,9 +8,9 @@ export class MovieService {
     url = environment.apiUrl;
     api_key = environment.api_key;
 
-    constructor(private http : HttpClient){}
+    constructor(private http: HttpClient) { }
 
-    getMovieList(genreId){
-        return this.http.get(`${this.url}/discover/movie?api_key=${this.api_key}&with_genres=${genreId}`);
+    getMovieList(genreId: any, page: number) {
+        return this.http.get(`${this.url}/discover/movie?api_key=${this.api_key}&with_genres=${genreId}&page=${page}`);
     }
 }
