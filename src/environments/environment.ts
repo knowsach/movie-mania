@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl : 'https://api.themoviedb.org/3',
-  api_key: 'caaff7ac5789b759861d8425f37186e7'
+  apiUrl: 'https://api.themoviedb.org/3',
 };
+
+export const Api = {
+  api_key: 'caaff7ac5789b759861d8425f37186e7'
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
